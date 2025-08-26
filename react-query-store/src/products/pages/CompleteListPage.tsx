@@ -1,9 +1,9 @@
 import { ProductList } from ".."
 import { useProducts } from "../hooks/useProducts"
-import { Products } from '../interfaces/productos';
 
 
-export const CompleteListPage = () => {
+// export const CompleteListPage = (): Products => {
+export const CompleteListPage = (): JSX.Element => {
 
   const { products, isLoading } = useProducts({})
 
@@ -15,7 +15,6 @@ export const CompleteListPage = () => {
       {isLoading && <p>Cargando...</p>}
 
       <ProductList products={products} />
-
     </div>
   )
 }
