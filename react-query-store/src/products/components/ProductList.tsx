@@ -1,8 +1,8 @@
-import { ProductCard, Products } from ".."
+import { ProductCard, Product } from ".."
 
 
 interface Props {
-  products: Products[];
+  products: Product[];
 }
 
 export const ProductList = ({ products }: Props) => {
