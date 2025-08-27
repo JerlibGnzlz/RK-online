@@ -67,7 +67,7 @@ export const NewProduct = () => {
               render={({ field }) => (
                 <Input
                   value={field.value?.toString()}
-                  onChange={field.onChange}
+                  onChange={(ev) => field.onChange(+ev.target.value)}
                   className="mt-2" type="number" label="Precio del producto" />
               )}
             />
