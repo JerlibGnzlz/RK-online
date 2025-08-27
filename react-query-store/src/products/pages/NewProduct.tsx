@@ -1,32 +1,125 @@
 import { Button, Image, Input, Textarea } from "@nextui-org/react";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
+
+
+interface FormInputs {
+  title: string;
+  price: number;
+  image: string;
+  description: string;
+  category: string;
+}
 export const NewProduct = () => {
 
+  const { control, handleSubmit } = useForm<FormInputs>({
+    defaultValues: {
+      title: "",
+      price: 0,
+      image: "",
+      description: "",
+      category: "",
+    },
+  });
 
+  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
+    console.log(data);
+  };
 
   return (
     <div className="w-full flex-col">
       <h1 className="text-2xl font-bold">Nuevo producto</h1>
 
-      <form className="w-full">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
 
         <div className="flex justify-around items-center">
 
           <div className="flex-col w-[500px]">
 
-            <Input className="mt-2" type="text" label="Titulo del producto" />
-            <Input className="mt-2" type="number" label="Precio del producto" />
-            <Input className="mt-2" type="url" label="Url del producto" />
-            <Textarea className="mt-2" label="Descripcion del producto" />
-            <select className="rounded-md p-3 mt-2 bg-gray-800 w-full">
-              <option value="men's clothing">Men's clothing</option>
-              <option value="women's clothing">Women's clothing</option>
-              <option value="jewelery">Jewelery</option>
-              <option value="electronics">Electronics</option>
-            </select>
+            <Controller
+              name="title"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="mt-2" type="text" label="Titulo del producto" />
+              )}
+            />
+
+            <Controller
+              name="category"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="mt-2" type="text" label="Categoria del producto" />
+              )}
+            />
+
+            <Controller
+              name="price"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Input
+                  value={field.value?.toString()}
+                  onChange={field.onChange}
+                  className="mt-2" type="number" label="Precio del producto" />
+              )}
+            />
+
+            <Controller
+              name="image"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Input
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="mt-2" type="url" label="Url del producto" />
+              )}
+            />
+
+
+            <Controller
+              name="description"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Textarea
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="mt-2" label="Descripcion del producto" />
+              )}
+            />
+
+
+            <Controller
+              name="category"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <select
+                  value={field.value}
+                  onChange={field.onChange}
+                  className="rounded-md p-3 mt-2 bg-gray-800 w-full"
+                >
+                  <option value="men's clothing">Men's clothing</option>
+                  <option value="women's clothing">Women's clothing</option>
+                  <option value="jewelery">Jewelery</option>
+                  <option value="electronics">Electronics</option>
+                </select>
+              )}
+            />
+
 
             <br />
-            <Button className="mt-2" color="primary">Crear</Button>
+            <Button type="submit"
+              className="mt-2" color="primary">Crear</Button>
           </div>
 
           <div className="bg-white rounded-2xl p-10 flex items-center" style={{

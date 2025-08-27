@@ -11,13 +11,15 @@ export type { Product } from './interfaces/productos'
 
 export { StoreLayout } from './layout/StoreLayout';
 export { useProductId } from './hooks/useProductId.tsx';
-
+export { usePrefechProduct } from './hooks/usePrefechProduct.tsx';
 
 export { CompleteListPage } from './pages/CompleteListPage';
 export { MensPage } from './pages/MensPage';
 export { NewProduct } from './pages/NewProduct';
 export { WomensPage } from './pages/WomensPage';
 export { ProductById } from './pages/ProductById';
+
+
 
 
 export * as  productActions from './services/actions.ts';

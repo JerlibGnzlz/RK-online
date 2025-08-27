@@ -1,4 +1,4 @@
-import { ProductCard, Product } from ".."
+import { ProductCard, Product, usePrefechProduct } from ".."
 
 
 interface Props {
@@ -6,6 +6,9 @@ interface Props {
 }
 
 export const ProductList = ({ products }: Props) => {
+
+  const prefectProduct = usePrefechProduct()
+
   return (
     <div className="mt-2 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2 justify-center max-w-max">
 
@@ -13,7 +16,9 @@ export const ProductList = ({ products }: Props) => {
         products.map(product => (
           <ProductCard
             key={product.id}
-            product={product} />
+            product={product}
+            prefectProduct={prefectProduct}
+          />
         ))
       }
     </div>
