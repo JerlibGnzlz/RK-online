@@ -239,6 +239,14 @@
         "rate": 3.6,
         "count": 145
       }
+    },
+    {
+      "title": "Producto nuevo",
+      "price": 29.95,
+      "description": "Faux leather material for style and comfort. 2 pockets at front. Button detail on waist. Detail stitching at sides.",
+      "category": "women's clothing",
+      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+      "id": 21
     }
   ]
 }
