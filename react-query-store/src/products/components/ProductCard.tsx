@@ -14,7 +14,8 @@ export const ProductCard = ({ product, fullDescripcion = false, prefectProduct }
 
   return (
     <Link to={`/product/${product.id}`}
-      onMouseEnter={() => prefectProduct && prefectProduct(product.id)}>
+      onMouseEnter={() => prefectProduct?.(product.id)}
+    >
       <Card
         className="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-3xl mx-auto border border-white bg-white">
         <div className="w-full md:w-1/3 bg-white grid place-items-center">
