@@ -2,7 +2,6 @@ import { ProductList } from ".."
 import { useProducts } from "../hooks/useProducts"
 
 
-// export const CompleteListPage = (): Products => {
 export const CompleteListPage = (): JSX.Element => {
 
   const { products, isLoading } = useProducts({})
