@@ -5,7 +5,6 @@ import { useEffect } from "react"
 
 
 
-// export const CompleteListPage = (): Products => {
 export const ProductById = () => {
 
     useEffect(() => {
