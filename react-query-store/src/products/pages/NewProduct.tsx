@@ -1,7 +1,6 @@
 import { Button, Image, Input, Textarea } from "@nextui-org/react";
-import { useMutation } from "@tanstack/react-query";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { productActions } from "..";
+import { useProductMutation } from "..";
 
 
 
@@ -12,26 +11,26 @@ interface FormInputs {
   description: string;
   category: string;
 }
+
+
+
 export const NewProduct = () => {
 
-  const productMutation = useMutation({
-    mutationFn: productActions.createProduct
+  const productMutation = useProductMutation()
 
-  });
-
-  const { control, handleSubmit } = useForm<FormInputs>({
+  const { control, handleSubmit, getValues } = useForm<FormInputs>({
     defaultValues: {
-      title: "",
-      price: 0,
-      image: "",
-      description: "",
-      category: "",
+      title: "Jean Jacket",
+      price: 109.95,
+      image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
+      description: "Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, ",
+      category: "men's clothing",
     },
   });
 
   const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
     console.log(data);
-    productMutation.mutate(data);
+    productMutation.mutate(data)
   };
 
   return (
@@ -141,7 +140,11 @@ export const NewProduct = () => {
           }}>
 
             <Image
-              src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png"
+              src={getValues().image}
+              alt="tailwind logo"
+              width={500}
+              height={600}
+              className="rounded-xl p-5 sm:p-0 bg-white"
             />
           </div>
 

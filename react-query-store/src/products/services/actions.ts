@@ -8,11 +8,10 @@ interface GetProductsOptions {
 }
 
 
-const sleep = (seconds: number) => new Promise(resolve => setTimeout(resolve, seconds * 1000));
+export const sleep = (seconds: number) => new Promise(resolve => setTimeout(resolve, seconds * 1000));
 
 export const getProducts = async ({ filterKey }: GetProductsOptions): Promise<Product[]> => {
 
-    await sleep(2);
 
     const filteredUrl = filterKey ? `category=${filterKey}` : '';
 
@@ -42,8 +41,7 @@ export interface ProductLike {
 
 export const createProduct = async (product: ProductLike) => {
 
-    await sleep(2);
-    const { data } = await productApi.post<Product>('/product', product);
+    const { data } = await productApi.post<Product>('/products', product);
 
     return data;
 };

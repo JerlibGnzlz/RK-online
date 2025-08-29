@@ -1,6 +1,4 @@
 
-
-
 export { ProductCard } from './components/ProductCard';
 export { ProductList } from './components/ProductList';
 
@@ -20,6 +18,8 @@ export { WomensPage } from './pages/WomensPage';
 export { ProductById } from './pages/ProductById';
 
 
+
+export { useProductMutation } from './hooks/useProductMutation.tsx';
 
 
 export * as  productActions from './services/actions.ts';
