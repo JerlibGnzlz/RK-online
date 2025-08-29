@@ -40,7 +40,7 @@ export interface ProductLike {
 }
 
 export const createProduct = async (product: ProductLike) => {
-
+    await sleep(2)
     const { data } = await productApi.post<Product>('/products', product);
 
     return data;
